@@ -1,4 +1,4 @@
 package br.com.a_event.evento.controller;
 
-public class EventoController {
+public class AgendamentoController {
 }
