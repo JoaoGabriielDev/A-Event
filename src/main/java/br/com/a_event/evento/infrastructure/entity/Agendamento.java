@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_agendamento")
+@EntityListeners(AuditingEntityListener.class)
 public class Agendamento {
 
     @Id
@@ -26,7 +29,9 @@ public class Agendamento {
 
     private LocalDateTime dataHoraPlanejada;
 
-    private LocalDateTime dataInsercao = LocalDateTime.now();
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime dataInsercao;
 
     private String telefone;
 }
